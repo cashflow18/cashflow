@@ -1,5 +1,6 @@
 package com.example.android.cashflow;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -15,11 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 //init
-public class HomePage extends AppCompatActivity
+public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    FragmentTransaction fragmentTransaction;
-    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,82 +29,16 @@ public class HomePage extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        // DRAWER LABELS
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-        // get menu from navigationView
-        Menu menu = navigationView.getMenu();
-
-        // find MenuItem you want to change
-        MenuItem nav_camara = menu.findItem(R.id.nav_home);
-
-        // set new title to the MenuItem
-        nav_camara.setTitle("Home");
-
-        // do the same for other MenuItems
-        MenuItem nav_gallery = menu.findItem(R.id.nav_calendar);
-        nav_gallery.setTitle("My Calendar");
-
-        // do the same for other MenuItems
-        MenuItem nav_slideshow = menu.findItem(R.id.nav_upload_receipt);
-        nav_slideshow.setTitle("Upload Receipt");
-
-        MenuItem nav_manual = menu.findItem(R.id.nav_manual_enter);
-        nav_manual.setTitle("Manually Enter Payment");
 
 
-        MenuItem nav_manage = menu.findItem(R.id.nav_categories);
-        nav_manage.setTitle("Catagories");
-
-
-
+        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        //fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        //fragmentTransaction.add(R.id.main_container, new MyCalendarFragment());
-        //fragmentTransaction.commit();
-        //getSupportActionBar().setTitle("Calendar Fragment");
-
-
-        // DRAWER LABELS
-
-        navigationView = (NavigationView)findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-
-                switch(item.getItemId())
-                {
-                    case R.id.nav_calendar:
-                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.main_container, new MyCalendarFragment());
-                        fragmentTransaction.commit();
-                        getSupportActionBar().setTitle("Calendar");
-                        item.setChecked(true);
-                        break;
-
-                }
-
-                return false;
-            }
-        });
-
 
 
     }
@@ -132,12 +65,6 @@ public class HomePage extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -149,15 +76,17 @@ public class HomePage extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_home) {
-
+            Intent swapIntent = new Intent(Home.this, Home.class);
+            startActivity(swapIntent);
         } else if (id == R.id.nav_calendar) {
-
+            Intent swapIntent = new Intent(Home.this, Calendar.class);
+            startActivity(swapIntent);
         } else if (id == R.id.nav_upload_receipt) {
-
+            Intent swapIntent = new Intent(Home.this, UploadReceipt.class);
+            startActivity(swapIntent);
         } else if(id == R.id.nav_manual_enter) {
-
+            Intent swapIntent = new Intent(Home.this, ManualPayment.class);
+            startActivity(swapIntent);
         } else if (id == R.id.nav_categories) {
 
         }
