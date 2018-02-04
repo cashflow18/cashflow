@@ -59,8 +59,11 @@ public class HomePage extends AppCompatActivity
         nav_gallery.setTitle("My Calendar");
 
         // do the same for other MenuItems
-        MenuItem nav_slideshow = menu.findItem(R.id.nav_add_payment);
-        nav_slideshow.setTitle("Add Payment");
+        MenuItem nav_slideshow = menu.findItem(R.id.nav_upload_receipt);
+        nav_slideshow.setTitle("Upload Receipt");
+
+        MenuItem nav_manual = menu.findItem(R.id.nav_manual_enter);
+        nav_manual.setTitle("Manually Enter Transaction");
 
         MenuItem nav_manage = menu.findItem(R.id.nav_categories);
         nav_manage.setTitle("Catagories");
@@ -120,7 +123,7 @@ public class HomePage extends AppCompatActivity
 
         } else if (id == R.id.nav_calendar) {
 
-        } else if (id == R.id.nav_add_payment) {
+        } else if (id == R.id.nav_upload_receipt) {
 
         } else if (id == R.id.nav_categories) {
 
