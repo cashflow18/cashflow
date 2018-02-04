@@ -2,9 +2,9 @@ package com.example.android.cashflow;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,10 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 //init
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    FragmentTransaction fragmentTransaction;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +67,8 @@ public class HomePage extends AppCompatActivity
         nav_slideshow.setTitle("Upload Receipt");
 
         MenuItem nav_manual = menu.findItem(R.id.nav_manual_enter);
-        nav_manual.setTitle("Manually Enter Transaction");
+        nav_manual.setTitle("Manually Enter Payment");
+
 
         MenuItem nav_manage = menu.findItem(R.id.nav_categories);
         nav_manage.setTitle("Catagories");
@@ -72,8 +77,34 @@ public class HomePage extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
+        //fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        //fragmentTransaction.add(R.id.main_container, new MyCalendarFragment());
+        //fragmentTransaction.commit();
+        //getSupportActionBar().setTitle("Calendar Fragment");
+
 
         // DRAWER LABELS
+
+        navigationView = (NavigationView)findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.nav_calendar:
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.main_container, new MyCalendarFragment());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("Calendar");
+                        item.setChecked(true);
+                        break;
+
+                }
+
+                return false;
+            }
+        });
 
 
 
@@ -124,6 +155,8 @@ public class HomePage extends AppCompatActivity
         } else if (id == R.id.nav_calendar) {
 
         } else if (id == R.id.nav_upload_receipt) {
+
+        } else if(id == R.id.nav_manual_enter) {
 
         } else if (id == R.id.nav_categories) {
 
