@@ -2,9 +2,6 @@ package com.example.android.cashflow;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Calendar extends AppCompatActivity
+public class MyCalendar extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -73,16 +70,16 @@ public class Calendar extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent swapIntent = new Intent(Calendar.this, Home.class);
+            Intent swapIntent = new Intent(MyCalendar.this, Home.class);
             startActivity(swapIntent);
         } else if (id == R.id.nav_calendar) {
-            Intent swapIntent = new Intent(Calendar.this, Calendar.class);
+            Intent swapIntent = new Intent(MyCalendar.this, MyCalendar.class);
             startActivity(swapIntent);
         } else if (id == R.id.nav_upload_receipt) {
-            Intent swapIntent = new Intent(Calendar.this, UploadReceipt.class);
+            Intent swapIntent = new Intent(MyCalendar.this, UploadReceipt.class);
             startActivity(swapIntent);
         } else if(id == R.id.nav_manual_enter) {
-            Intent swapIntent = new Intent(Calendar.this, ManualPayment.class);
+            Intent swapIntent = new Intent(MyCalendar.this, ManualPayment.class);
             startActivity(swapIntent);
         } else if (id == R.id.nav_categories) {
 

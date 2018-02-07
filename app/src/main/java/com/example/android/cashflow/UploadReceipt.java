@@ -5,14 +5,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -131,7 +128,7 @@ public class UploadReceipt extends AppCompatActivity
 
                                 textView.setText(stringBuilder.toString());
                             }
-                        }); 
+                        });
                     }
                 }
             });
@@ -192,7 +189,7 @@ public class UploadReceipt extends AppCompatActivity
             Intent swapIntent = new Intent(UploadReceipt.this, Home.class);
             startActivity(swapIntent);
         } else if (id == R.id.nav_calendar) {
-            Intent swapIntent = new Intent(UploadReceipt.this, Calendar.class);
+            Intent swapIntent = new Intent(UploadReceipt.this, MyCalendar.class);
             startActivity(swapIntent);
         } else if (id == R.id.nav_upload_receipt) {
             Intent swapIntent = new Intent(UploadReceipt.this, UploadReceipt.class);
